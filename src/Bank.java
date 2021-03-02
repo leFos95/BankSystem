@@ -71,6 +71,17 @@ public class Bank {
 		
 	}
 	
+	public BankAccount getItem(String accountNumber) {
+		int index;
+		index = search(accountNumber);
+		if(index == -999) {
+			return null;
+		}
+		else {
+			return list[index];
+		}
+	}
+	
 	public String toString() {
 		String items = "";
 		for (int i = 0; i< total; i++) {

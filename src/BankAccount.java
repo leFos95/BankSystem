@@ -1,13 +1,14 @@
 
 public class BankAccount {
 
-	private String accountName;
 	private String accountNumber;
+	private String accountName;
 	private double balance;
 	
 	public BankAccount(String accountNumber, String accountName) {
-		accountName = this.accountName;
-		accountNumber = this.accountNumber;
+		this.accountNumber = accountNumber;
+		this.accountName = accountName;
+		balance = 0;
 	}
 	
 	public String getAccountNumber() {
@@ -22,13 +23,6 @@ public class BankAccount {
 		return balance;
 	}
 	
-	public void setAccountName(String accountName) {
-		accountName = this.accountName;
-	}
-	
-	public void setAccountNumber(String accountNumber) {
-		accountNumber = this.accountNumber;
-	}
 	
 	public void deposit(double amount) {
 		balance = balance + amount;

@@ -82,6 +82,18 @@ public class Bank {
 		}
 	}
 	
+	public boolean withdrawMoney(String accountNumber, double amount) {
+		boolean okToWithdraw;
+		int index = search(accountNumber);
+		if(index == -999) {
+			return false;
+		}
+		else {
+			okToWithdraw = list[index].withdraw(amount);
+			return okToWithdraw;
+		}
+	}
+	
 	public boolean remove(String number) {
 		int index = search(number);
 		if(index == -999) {

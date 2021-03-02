@@ -15,8 +15,9 @@ public class BankProgram {
 		do {
 			System.out.println();
 			System.out.println("1. Create new account");
-			System.out.println("2. Deposit money");
-			System.out.println("3. Check account details");
+			System.out.println("2. Remove an account");
+			System.out.println("3. Deposit money");
+			System.out.println("4. Check account details");
 			System.out.println();
 			System.out.print("Enter your choice [1-6]: ");
 			
@@ -31,6 +32,8 @@ public class BankProgram {
 			case '2': option2(myBank);
 			break;
 			case '3': option3(myBank);
+			break;
+			case '4': option4(myBank);
 			break;
 			}
 		}while(choice != 6);
@@ -57,6 +60,18 @@ public class BankProgram {
 	static void option2(Bank bankIn) {
 		System.out.print("Enter account number: ");
 		String number = EasyScanner.nextString();
+		boolean ok = bankIn.remove(number);
+		if(!ok) {
+			System.out.println("No such account number");
+		}
+		else {
+			System.out.println("Account was successfully removed!");
+		}
+	}
+	
+	static void option3(Bank bankIn) {
+		System.out.print("Enter account number: ");
+		String number = EasyScanner.nextString();
 		System.out.print("Enter amount to deposit: ");
 		double amount = EasyScanner.nextDouble();
 		boolean ok = bankIn.depositMoney(number, amount);
@@ -68,7 +83,7 @@ public class BankProgram {
 		}
 	}
 	
-	static void option3(Bank bankIn) {
+	static void option4(Bank bankIn) {
 		
 		System.out.print("Enter account number: ");
 		String number = EasyScanner.nextString();

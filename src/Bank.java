@@ -82,6 +82,20 @@ public class Bank {
 		}
 	}
 	
+	public boolean remove(String number) {
+		int index = search(number);
+		if(index == -999) {
+			return false;
+		}
+		else {
+			for(int i = index; i <= total-2; i++) {
+				list[i] = list[i+1];
+			}
+			total--;
+			return true;
+		}
+	}
+	
 	public String toString() {
 		String items = "";
 		for (int i = 0; i< total; i++) {

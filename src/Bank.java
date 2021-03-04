@@ -14,12 +14,12 @@ public class Bank {
 	}
 	
 	// Find index
-	private int search(String accountNumber) {
+	public int search(int accountNumber) {
 		for(int i = 0; i < total; i++)
 		{
 			BankAccount tempAccount = list[i]; //find the account at index i
-			String tempNumber = tempAccount.getAccountNumber(); //get account number
-			if(tempNumber.equals(accountNumber)) //if this is the account we are looking for
+			int tempNumber = tempAccount.getAccountNumber(); //get account number
+			if(tempNumber == accountNumber) //if this is the account we are looking for
 			{
 				return i; //return index
 			}
@@ -59,7 +59,7 @@ public class Bank {
 		}
 	}
 	
-	public boolean depositMoney(String accountNumber, double amount) {
+	public boolean depositMoney(int accountNumber, double amount) {
 		
 		int index = search(accountNumber);
 		if(index == -999) {
@@ -71,7 +71,16 @@ public class Bank {
 		
 	}
 	
-	public BankAccount getItem(String accountNumber) {
+//	public BankAccount getItem(int positionIn) {
+//		if(positionIn < 1 || positionIn > total) {
+//			return null;
+//		}
+//		else {
+//			return (BankAccount) list[positionIn-1];
+//		}
+//	}
+	
+	public BankAccount getItem(int accountNumber) {
 		int index;
 		index = search(accountNumber);
 		if(index == -999) {
@@ -82,7 +91,7 @@ public class Bank {
 		}
 	}
 	
-	public boolean withdrawMoney(String accountNumber, double amount) {
+	public boolean withdrawMoney(int accountNumber, double amount) {
 		boolean okToWithdraw;
 		int index = search(accountNumber);
 		if(index == -999) {
@@ -94,7 +103,7 @@ public class Bank {
 		}
 	}
 	
-	public boolean remove(String number) {
+	public boolean remove(int number) {
 		int index = search(number);
 		if(index == -999) {
 			return false;
@@ -108,13 +117,13 @@ public class Bank {
 		}
 	}
 	
-	public String toString() {
-		String items = "";
-		for (int i = 0; i< total; i++) {
-			items = items + list[i].toString() + " ";
-		}
-		return "[ " + items + "]";
-	}
+//	public String toString() {
+//		String items = "";
+//		for (int i = 0; i< total; i++) {
+//			items = items + list[i].toString() + " ";
+//		}
+//		return "[ " + items + "]";
+//	}
 	
 	
 }

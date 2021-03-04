@@ -5,7 +5,7 @@ public class BankAccountTester {
 		
 		double amount;
 		boolean ok;
-		BankAccount account1 = new BankAccount("12345", "Susan");
+		BankAccount account1 = new BankAccount(12345, "Susan");
 		
 		System.out.print("Enter amount to deposit: ");
 		amount = EasyScanner.nextDouble();

@@ -1,17 +1,17 @@
 
 public class BankAccount {
 
-	private String accountNumber;
+	private int accountNumber;
 	private String accountName;
 	private double balance;
 	
-	public BankAccount(String accountNumber, String accountName) {
+	public BankAccount(int accountNumber, String accountName) {
 		this.accountNumber = accountNumber;
 		this.accountName = accountName;
 		balance = 0;
 	}
 	
-	public String getAccountNumber() {
+	public int getAccountNumber() {
 		return accountNumber;
 	}
 	

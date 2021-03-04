@@ -46,7 +46,7 @@ public class BankProgram {
 	
 	static void option1(Bank bankIn) {
 		System.out.print("Enter account number: ");
-		String number = EasyScanner.nextString();
+		int number = EasyScanner.nextInt();
 		System.out.print("Enter account name: ");
 		String name = EasyScanner.nextString();
 		
@@ -64,7 +64,7 @@ public class BankProgram {
 	
 	static void option2(Bank bankIn) {
 		System.out.print("Enter account number: ");
-		String number = EasyScanner.nextString();
+		int number = EasyScanner.nextInt();
 		boolean ok = bankIn.remove(number);
 		if(!ok) {
 			System.out.println("No such account number");
@@ -76,7 +76,7 @@ public class BankProgram {
 	
 	static void option3(Bank bankIn) {
 		System.out.print("Enter account number: ");
-		String number = EasyScanner.nextString();
+		int number = EasyScanner.nextInt();
 		System.out.print("Enter amount to deposit: ");
 		double amount = EasyScanner.nextDouble();
 		boolean ok = bankIn.depositMoney(number, amount);
@@ -90,7 +90,7 @@ public class BankProgram {
 	
 	static void option4(Bank bankIn) {
 		System.out.print("Enter account number: ");
-		String number = EasyScanner.nextString();
+		int number = EasyScanner.nextInt();
 		System.out.print("Enter amount to withdraw: ");
 		double amount = EasyScanner.nextDouble();
 		boolean ok = bankIn.withdrawMoney(number, amount);
@@ -105,7 +105,7 @@ public class BankProgram {
 	static void option5(Bank bankIn) {
 		
 		System.out.print("Enter account number: ");
-		String number = EasyScanner.nextString();
+		int number = EasyScanner.nextInt();
 		BankAccount account = bankIn.getItem(number);
 		if(account == null) {
 			System.out.println("No such account number");

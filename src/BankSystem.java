@@ -94,6 +94,7 @@ public class BankSystem extends JFrame implements ActionListener {
 		displayButton.addActionListener(this);
 		removeButton.addActionListener(this);
 		depositButton.addActionListener(this);
+		withdrawButton.addActionListener(this);
 		checkDetailsButton.addActionListener(this);
 		quitButton.addActionListener(this);
 		
@@ -110,11 +111,14 @@ public class BankSystem extends JFrame implements ActionListener {
 			if(numberEntered.length() == 0 || nameEntered.length() == 0) {
 				displayArea1.setText("Account number and account name must be entered");
 			}
-			else if (Integer.parseInt(numberEntered) < 1 | Integer.parseInt(numberEntered) > size) {
+			else if (Integer.parseInt(numberEntered) < 1 || Integer.parseInt(numberEntered) > size) {
 				displayArea1.setText("There are only " + size + " accounts to be entered");
 			}
 			else if(myBank.search(Integer.parseInt(numberEntered)) != -999) {
 				displayArea1.setText("The " + Integer.parseInt(numberEntered) + " already exists");
+			}
+			else if(!nameEntered.matches("[a-zA-Z]+")) {
+				displayArea1.setText("Accepts only characters");
 			}
 			else {
 				BankAccount account = new BankAccount(Integer.parseInt(numberEntered), nameEntered);
@@ -186,9 +190,25 @@ public class BankSystem extends JFrame implements ActionListener {
 		if(e.getSource() == withdrawButton) {
 			String numberEntered = accountNumberField2.getText();
 			String amountEntered = amountField.getText();
+			boolean ok;
 			
 			if(numberEntered.length() == 0 || amountEntered.length() <= 0) {
 				displayArea2.setText("Account number and amount must be entered");
+			}
+			else if(Integer.parseInt(numberEntered) < 1 || Integer.parseInt(numberEntered) > size) {
+				displayArea2.setText("invalid account number");
+			}
+			else if(myBank.search(Integer.parseInt(numberEntered)) == -999) {
+				displayArea2.setText("User with account number: " + " < " + Integer.parseInt(numberEntered) + "> " + " does not exists");
+			}
+			else {
+				ok = myBank.withdrawMoney(Integer.parseInt(numberEntered), Integer.parseInt(amountEntered));
+				if(!ok) {
+					displayArea2.setText("Insufficient funds");
+				}
+				else {
+					displayArea2.setText("Withdrawn was made");
+				}
 			}
 		}
 		
@@ -208,7 +228,7 @@ public class BankSystem extends JFrame implements ActionListener {
 			else {
 				BankAccount account = myBank.getItem(Integer.parseInt(numberEntered));
 				if(account.getBalance() == 0) {
-					displayArea2.setText("No payments made for this user");
+					displayArea2.setText("The balance of this account is: " + account.getBalance());
 				}
 				else {
 					NumberFormat nf = NumberFormat.getCurrencyInstance();

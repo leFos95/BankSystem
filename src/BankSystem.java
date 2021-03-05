@@ -214,10 +214,9 @@ public class BankSystem extends JFrame implements ActionListener {
 					NumberFormat nf = NumberFormat.getCurrencyInstance();
 					String s;
 					displayArea2.setText("Account number" + "\t" + "Amount" + "\n");
-					for(i = 1; i <= myBank.getTotal(); i++) {
-						s = nf.format(account.getBalance());
-						displayArea2.append("" + account.getAccountNumber() + "\t\t" + s + "\n");
-					}
+					s = nf.format(account.getBalance());
+					displayArea2.append("" + account.getAccountNumber() + "\t\t" + s + "\n");
+					
 				}
 			}
 		}
